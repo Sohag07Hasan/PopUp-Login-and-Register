@@ -1,0 +1,100 @@
+/* 
+    Document   : popup
+    Created on : Dec 30, 2011, 1:19:02 AM
+    Author     : s
+    Description:
+        Purpose of the stylesheet follows.
+        
+        styling the popup window
+
+*/
+
+#blanket {
+    background-color: #E5E5E5;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 9998;
+}
+#popup .window {
+    border: 20px solid #DDDDDD;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 20px #000000;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+}
+
+#popup #popup-content {
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+#popup .close {
+    background: url("close_pop.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 50px;
+	width: 50px;
+    position: absolute;
+    right: -29px;
+    top: -31px;
+    z-index: 9999;
+}
+#popup h2{
+text-align: center;
+}
+
+/*
+customizing the style files
+*/
+.popup-login-form{
+	display: inline;
+	float: left;
+	margin-right: 10px;
+	position: relative;
+}
+
+#loginform-popup p{	
+	font-size: 13px;	
+}
+
+.registration-divs{
+	float: left;
+	margin: 10px;
+}
+.registration-divs-right{
+	float: right;
+	margin: 10px;
+}
+
+
+.rsimplemodal-login-fields td{
+	padding: 10px;
+}
+
+input.paw-word{
+	height: 24px;
+	width:180px;
+}
+
+div.title-name{
+	margin-left: 15px;
+	color: #257EA8;
+	font-size: 18px;
+}
+
+.registration-tables td{
+	padding: 7px;
+}
+
+.login_message, .registration-message{
+	background-color: #FFEBE8;
+	border-color: #CC0000;
+	margin: 0 0 16px 8px;
+	padding: 12px;
+	border-radius: 3px 3px 3px 3px;
+        border-style: solid;
+        border-width: 1px;
+	
+        line-height: 1.4em;
+}
