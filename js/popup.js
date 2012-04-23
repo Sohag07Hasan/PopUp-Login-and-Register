@@ -107,33 +107,53 @@ jQuery(document).ready(function($) {
 	
 	//handling the registration form
 	$('.button-register').bind('click', function(){
+	//	alert($("input[type=text][name=fname]").val());
 		
-		
-		var form_data = $('#registration-form-popup').serialize();
+		//var form_data = $('#registration-form-popup');
 				
 		$.ajax({
-			async: true,
-			type:'post',			
-			dataType:"html",
-			url:PopUp.ajaxurl,
-			cache:false,
-			timeout:10000,
+			async : true,
+			type : 'post',			
+			dataType : "html",
+			url : PopUp.ajaxurl,
+			cache : false,
+			timeout : 10000,
 			data : {
 				'action' : 'popup_user_registration',
-				'form_data' : form_data,
+				'salutation' : $('#salutation').val(),
+				'fname' : $("input[type=text][name=fname]").val(),
+				'lname' : $("input[type=text][name=lname]").val(),				
+				'road' : $("input[type=text][name=road]").val(),				
+				'place' : $("input[type=text][name=place]").val(),
+				'land' : $("input[type=text][name=land]").val(),
+				'username' : $("input[type=text][name=username]").val(),
+				'email' : $("input[type=text][name=email]").val(),				
+				'birth-day' : $('#birth-day').val(),				
+				'birth-month' : $('#birth-month').val(),
+				'birth-year' : $('#birth-year').val(),
+				'password1' : $("input[type=password][name=password1]").val(),
+				'password2' : $("input[type=password][name=password2]").val(),
+				
 			},
 			
-			success:function(resp){				
-				$('.registration-message').html($(resp).html());
+			success : function(resp){
+				if(resp == 'a'){
+					$('.registration-message').html("successfull");
+				}
+				else{
+					$('.registration-message').html($(resp).html());
+				}
+				
 				$('.registration-message').show();
 				return false;
 			},
-			error: function(jqXHR, textStatus, errorThrown){
+			error : function(jqXHR, textStatus, errorThrown){
 				jQuery('#footer').html(textStatus);
 				alert(textStatus);
 				return false;
 			}
 		});
+		
 		
 		return false;
 	})

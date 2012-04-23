@@ -61,7 +61,7 @@
 	  *  select day
 	  */
 	 static function select_day(){
-		 $output = '<select name="birth-day">';
+		 $output = '<select id="birth-day">';
 		 for($i = 1; $i<32; $i++){
 			 $output .= "<option value='$i'>$i</option>";
 		 }
@@ -74,7 +74,7 @@
 	  */
 	 static function select_month(){
 		 $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Ocober', 'November', 'December');
-		 $output = '<select name="birth-month">';
+		 $output = '<select id="birth-month">';
 		 foreach($months as $key=>$value){
 			 $i = $key + 1;
 			 $output .= "<option value='$i'>" . __($value) . "</option>";
@@ -89,7 +89,7 @@
 	 static function select_year(){
 		 $start_year = 1950;
 		 $endyear = 2012;
-		 $output = '<select name="birth-year">';
+		 $output = '<select id="birth-year">';
 		 for($i = $start_year; $i<$endyear; $i++){			
 			 $output .= "<option value='$i'>$i</option>";
 		 }
@@ -101,11 +101,18 @@
 	  * Handle ajax registration
 	  */
 	 static function ajax_registration(){
-		
+		$data = $_POST;
 		 $error = array();
-		 $form_data = $_POST['form_data'];
-		 $data = explode('&', $form_data);
+		/*
+		 $formdata_array = explode('&', $form_data);
 		 
+		 if(is_array($formdata_array)){
+			 foreach($form_data as $fdata){
+				 $fd = explode('=', $fdata);
+				 $data[$fd[0]] = $fd[1];
+			 }
+		 }
+		 */
 		 if(empty($data['fname']) || $data['fname'] == '') $error['fname'] = __('First Name Error');
 		 if(empty($data['lname']) || $data['lname'] == '') $error['lname'] = __('Last Name Error');
 		 
@@ -140,7 +147,9 @@
 			$user_data = array(
 				'user_login' => $data['username'],
 				'user_pass' => $password,
-				'user_email' => $data['email']
+				'user_email' => $data['email'],
+				'first_name' => $data['fname'],
+				'last_name' => $data['lname'],
 			);			
 			$user = wp_insert_user($user_data);
 			
@@ -163,6 +172,9 @@
 				 }
 			 }
 			 echo '</div>';
+		 }
+		 else{
+			 echo 'a';
 		 }
 		exit;
 	 }
