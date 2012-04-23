@@ -50,17 +50,13 @@ customizing the style files
 .popup-login-form{
 	display: inline;
 	float: left;
-	margin-right: 10px;
+	margin-right: 5px;
 	position: relative;
-}
-
-#loginform-popup p{	
-	font-size: 13px;	
 }
 
 .registration-divs{
 	float: left;
-	margin: 10px;
+	margin: 5px;
 }
 .registration-divs-right{
 	float: right;
@@ -84,7 +80,7 @@ div.title-name{
 }
 
 .registration-tables td{
-	padding: 7px;
+	padding: 4px;
 }
 
 .login_message, .registration-message{
@@ -97,4 +93,21 @@ div.title-name{
         border-width: 1px;
 	
         line-height: 1.4em;
+}
+
+.login_successful, .registration-successful{
+	background-color: #FFFBCC;
+	border-color: #E6DB55;
+	margin: 0 0 16px 8px;
+	padding: 12px;
+	border-radius: 3px 3px 3px 3px;
+        border-style: solid;
+        border-width: 1px;
+	color: #555555;
+        line-height: 1.4em;
+}
+
+.popup-login-ajaxloader{
+	text-align: center;
+	display: none;
 }

@@ -36,10 +36,11 @@
 	  */
 	 static function login_js(){
 		//if(is_user_logged_in()) return;
+		$ajax_loader = PopUpURL . '/images/ajax-loader.gif';
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('PopupLoginJS', PopUpURL . '/js/popup.js',array('jquery'));
 		wp_localize_script(
-			'PopupLoginJS', 'PopUp', array('ajaxurl' => admin_url( 'admin-ajax.php' ))
+			'PopupLoginJS', 'PopUp', array('ajaxurl' => admin_url( 'admin-ajax.php' ), 'ajaxloader' => $ajax_loader)
 		);
 	 }
 	 
@@ -103,16 +104,8 @@
 	 static function ajax_registration(){
 		$data = $_POST;
 		 $error = array();
-		/*
-		 $formdata_array = explode('&', $form_data);
-		 
-		 if(is_array($formdata_array)){
-			 foreach($form_data as $fdata){
-				 $fd = explode('=', $fdata);
-				 $data[$fd[0]] = $fd[1];
-			 }
-		 }
-		 */
+		
+		
 		 if(empty($data['fname']) || $data['fname'] == '') $error['fname'] = __('First Name Error');
 		 if(empty($data['lname']) || $data['lname'] == '') $error['lname'] = __('Last Name Error');
 		 
