@@ -32,58 +32,86 @@ function is_phone(phone){
 }
 */
 
+
+
 jQuery(document).ready(function($) {
-	$('.popup-login').bind('click', function(){
-		$('.login_message').hide();
-		$('.registration-message').hide();
-		$('.login_successful').hide();
-		$('.registration-successful').hide();
+	
+	//the variable to control the notification
+	var PopUpNotification = {
+		init : function(){
+			$('.login_message').hide();
+			$('.registration-message').hide();
+			$('.login_successful').hide();
+			$('.registration-successful').hide();
+		},
+		logininit : function(){
+			$('.registration-message').hide();
+			$('.registration-successful').hide();
+			$('#sitemodal-login-submit-div').hide();
+			$('#login-ajaxloader').show();
+		},
+		registrationinit : function(){
+			$('.login_message').hide();
+			$('.login_successful').hide();
+			$('#registration-form-popup').hide();
+			$('#register-ajaxloader').show();
+		}
+	}
+	
+	
+	/*
+	 *Main functionality
+	 **/
+	
+	$('.popup-login').bind('click', function(){		
+			
+		//hiding all the notification divs
+		PopUpNotification.init();
 
-		 var this_obj = this;
-			var id = '#popup-content';
+		var this_obj = this;
+		var id = '#popup-content';
 
-			//Get the screen height and width
-			var blanketHeight = $(document).height();
-			var blanketWidth = $(window).width();
+		//Get the screen height and width
+		var blanketHeight = $(document).height();
+		var blanketWidth = $(window).width();
 
-			//Set heigth and width to blanket to fill up the whole screen
-			$('#blanket').css({'width':blanketWidth,'height':blanketHeight});
+		//Set heigth and width to blanket to fill up the whole screen
+		$('#blanket').css({'width':blanketWidth,'height':blanketHeight});
 
-			//transition effect        
-			$('#blanket').fadeIn(1000);    
-			$('#blanket').fadeTo("slow",0.8);    
+		//transition effect        
+		$('#blanket').fadeIn(1000);    
+		$('#blanket').fadeTo("slow",0.8);    
 
-			//Get the window height and width
-			var winH = $(window).height();
-			var winW = $(window).width();
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
 
-			//Set the popup window to center
-			$(id).css('top',  winH/2-$(id).height()/1.2);
-			$(id).css('left', winW/2-$(id).width()/2);
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/1.2);
+		$(id).css('left', winW/2-$(id).width()/2);
 
-			//transition effect
-			$(id).show(1000);
-			return false;
+		//transition effect
+		$(id).show(1000);
+		return false;
 	})
           
 
-    //if close button is clicked
-    $('.close').click(function (e) {
-        //Cancel the link behavior       
-                $('#blanket').fadeOut();
-                $('.window').slideUp();           
+		//if close button is clicked
+	$('.close').click(function (e) {
+		//Cancel the link behavior       
+		$('#blanket').fadeOut();
+		$('.window').slideUp();           
 		return false;
-    });        
+	});        
 
 	// now if someone tries to login
 
 	$('.sitemodal-login-submit').bind('click', function(){
 		
-		//diong some indication to the visitors that ajax is proecessing data
-		$('.registration-message').hide();
-		$('.registration-successful').hide();
-		$('#sitemodal-login-submit-div').hide();
-		$('#login-ajaxloader').show();
+		//initialize the process
+		PopUpNotification.init();
+		PopUpNotification.logininit();
+		
 		
 		//starting ajax
 		var redirect = window.location.href;	
@@ -108,13 +136,14 @@ jQuery(document).ready(function($) {
 				
 				var error = $('#login_error', resp).html();
 				if(error){
-					$('.login_message').html($('#login_error', resp).html());
-					$('.login_message').attr('id', 'login_error');
+					$('.login_message').html($('#login_error', resp).html());					
 					$('.login_message').show();
 				}
 				
 				
 				else{
+					$('.login_successful').html("Redirecting............");
+					$('.login_successful').show();
 					window.location.href = redirect;
 				}
 								
@@ -137,11 +166,9 @@ jQuery(document).ready(function($) {
 	 **/
 	$('.button-register').bind('click', function(){
 		
-		//ajax indicator
-		$('.login_message').hide();
-		$('.login_successful').hide();
-		$('#registration-form-popup').hide();
-		$('#register-ajaxloader').show();
+		//registratin process initializtion
+		PopUpNotification.init();
+		PopUpNotification.registrationinit()
 
 		$.ajax({
 			async : true,
