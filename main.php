@@ -14,3 +14,6 @@ define("PopUpURL", plugins_url('', __FILE__));
  */
 include PopUpDir . '/classes/simple-popup-class.php';
 simplePopUpLogin :: init();
+
+include PopUpDir . '/classes/registration-login-control.php';
+popup_registration_and_login_control :: init();

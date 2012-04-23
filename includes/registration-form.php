@@ -4,7 +4,7 @@
 	<div id="registration-form-popup">
 		<div class="registration-message" style="display: none"></div>
 		<div class="registration-successful" style="display: none"></div>
-		<form name="registrationform"  action="<?php echo site_url('wp-login.php?action=register', 'login_post'); ?>" method="post">
+		<form id="popup-registration-form" name="registrationform"  action="<?php echo site_url('wp-login.php?action=register', 'login_post'); ?>" method="post">
 			<div class="registration-divs">
 				<table class="registration-tables">
 					<tr>

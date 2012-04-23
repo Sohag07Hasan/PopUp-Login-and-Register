@@ -1,0 +1,19 @@
+/*
+Only for login page css
+*/
+#registerform{
+	/*display: none;*/
+}
+
+#sitemodal-login-submit-form input{
+	height: 25px;
+}
+
+#popup-registration-form input{
+	height: 25px;
+	border: none;
+}
+
+#nav{
+	display: none;
+}

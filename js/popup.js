@@ -63,8 +63,8 @@ jQuery(document).ready(function($) {
 	 *Main functionality
 	 **/
 	
-	$('.popup-login').bind('click', function(){		
-			
+	$('.popup-login').bind('click', function(){
+				
 		//hiding all the notification divs
 		PopUpNotification.init();
 

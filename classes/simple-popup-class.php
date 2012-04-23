@@ -24,7 +24,7 @@
 	  * css
 	  */
 	 static function login_css(){
-		 
+			 
 	//	if(is_user_logged_in()) return;
 		wp_register_style('PopupLoginCSS', PopUpURL . '/css/popup.css');
 		wp_enqueue_style('PopupLoginCSS');	
