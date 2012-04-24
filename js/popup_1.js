@@ -55,20 +55,6 @@ jQuery(document).ready(function($) {
 			$('.login_successful').hide();
 			$('#registration-form-popup').hide();
 			$('#register-ajaxloader').show();
-		},
-		
-		registrationformhide : function(){
-			$('.popup-registration-form').hide();
-		},
-		registrationformshow : function(){
-			$('.popup-registration-form').show();
-		},
-		
-		loginformhide : function(){
-			$('.popup-login-form').hide();
-		},
-		loginformshow : function(){
-			$('.popup-login-form').show();
 		}
 	}
 	
@@ -78,21 +64,7 @@ jQuery(document).ready(function($) {
 	 **/
 	
 	$('.popup-login').bind('click', function(){
-		
-		//if the widget button is pressed
-		if($(this).attr('name') == 'popup-widge-loign-button'){
-			PopUpNotification.registrationformhide();
-			PopUpNotification.loginformshow();
-		}
-		else if($(this).attr('name') == 'popup-widge-reg-button'){
-			PopUpNotification.loginformhide();
-			PopUpNotification.registrationformshow();
-		}
-		else{
-			PopUpNotification.registrationformshow();
-			PopUpNotification.loginformshow();
-		}
-
+				
 		//hiding all the notification divs
 		PopUpNotification.init();
 
@@ -134,7 +106,7 @@ jQuery(document).ready(function($) {
 
 	// now if someone tries to login
 
-	$('.sitemodal-login-submit').bind('click', function(){		
+	$('.sitemodal-login-submit').bind('click', function(){
 		
 		//initialize the process
 		PopUpNotification.init();
@@ -193,7 +165,6 @@ jQuery(document).ready(function($) {
 	 *
 	 **/
 	$('.button-register').bind('click', function(){
-		
 		
 		//registratin process initializtion
 		PopUpNotification.init();

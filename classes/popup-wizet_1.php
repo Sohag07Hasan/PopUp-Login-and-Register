@@ -34,9 +34,9 @@ class PopUpLoginWizet extends WP_Widget{
 				 <?php// if ( $title ) echo $before_title . $title . $after_title; ?>
 					
 					
-					<input type="submit" name="popup-widge-loign-button" class="popup-login" value="<?php echo $buttonNname;?>" /> 
+					<input type="submit" name="loign-button" class="popup-login" value="<?php echo $buttonNname;?>" /> 
 					
-					<input type="submit" class="popup-login" name="popup-widge-reg-button" value="<?php echo  $registrationNname;?>" />
+					<input type="submit" class="popup-login" name="reg-button" value="<?php echo  $registrationNname;?>" />
 				
 			<?php echo $after_widget; ?>
 
