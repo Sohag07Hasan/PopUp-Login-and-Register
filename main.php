@@ -17,3 +17,8 @@ simplePopUpLogin :: init();
 
 include PopUpDir . '/classes/registration-login-control.php';
 popup_registration_and_login_control :: init();
+
+/*
+ * widget including
+ */
+include PopUpDir . '/classes/popup-wizet.php';

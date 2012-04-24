@@ -25,7 +25,7 @@
 	  */
 	 static function login_css(){
 			 
-	//	if(is_user_logged_in()) return;
+		if(is_user_logged_in()) return;
 		wp_register_style('PopupLoginCSS', PopUpURL . '/css/popup.css');
 		wp_enqueue_style('PopupLoginCSS');	
 		
@@ -35,7 +35,8 @@
 	  * js add
 	  */
 	 static function login_js(){
-		//if(is_user_logged_in()) return;
+		if(is_user_logged_in()) return;
+		
 		$ajax_loader = PopUpURL . '/images/ajax-loader.gif';
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('PopupLoginJS', PopUpURL . '/js/popup.js',array('jquery'));
@@ -48,6 +49,7 @@
 	  * holds the login and registration form
 	  */
 	 static function login_registration_form(){
+		 if(is_user_logged_in()) return;
 		 echo '<div id="popup">';
 		 echo '<div id="popup-content" class="window" style="display:none">';
 		 echo '<a href="#" class="close"></a>';

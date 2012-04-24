@@ -11,14 +11,27 @@ class popup_registration_and_login_control{
 	 */
 	static function  init(){		
 		add_action('login_enqueue_scripts', array(get_class(), 'registration_js_css'));
-		//add_filter('template_include', array(get_class(), 'template_include'));
+		add_action('register_form', array(get_class(), 'register_form'));
 		add_action('init', array(get_class(), 'login_to_notfound'));
 		
 	}
 	
-	static function template_include($template){
-		var_dump($template);
-		exit;
+	/*
+	 * sanitize the registeration form
+	 */
+	static function register_form(){
+		?>
+		
+		<script type="text/javascript">
+			
+			
+			jQuery(document).ready(function(){					
+				jQuery('#nav').html(null);
+			});
+			
+		</script>	
+		
+		<?php
 	}
 
 
@@ -34,9 +47,9 @@ class popup_registration_and_login_control{
 	}
 	
 	static function login_to_notfound(){
-		
+		if(isset($_REQUEST['logout'])) return;
 		if(preg_match('/wp-login.php/', $_SERVER['REQUEST_URI'])){
-			if($_REQUEST['action'] == 'register' || $_REQUEST['action'] == 'login' || empty($_REQUEST['action'])){
+			if($_REQUEST['action'] == 'register' || $_REQUEST['action'] == 'login'){
 				$template = get_404_template();
 				include($template);
 				exit;
